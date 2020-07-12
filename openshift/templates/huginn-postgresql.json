@@ -121,6 +121,9 @@
                     }, {
                         "name": "ON_HEROKU",
                         "value": "true"
+                    }, {
+                        "name": "ADDITIONAL_GEMS",
+                        "value": "${ADDITIONAL_GEMS}"
                     }]
                 }
             },
@@ -446,6 +449,9 @@
                                     "key" : "databasePassword"
                                 }
                             }
+                        }, {
+                            "name": "ADDITIONAL_GEMS",
+                            "value": "${ADDITIONAL_GEMS}"
                         }],
                         "resources": {
                             "limits": {
@@ -537,11 +543,12 @@
         "name": "SOURCE_REPOSITORY_URL",
         "displayName": "Git Repository URL",
         "description": "The URL of the repository with your application source code.",
-        "value": "https://github.com/huginn/huginn.git",
+        "value": "https://github.com/comicmuse/huginn.git",
         "required": true
     }, {
         "name": "SOURCE_REPOSITORY_REF",
         "displayName": "Git Reference",
+        "value" : "local_installation",
         "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch."
     }, {
         "name": "CONTEXT_DIR",
@@ -637,5 +644,11 @@
         "displayName": "Database Password",
         "generate": "expression",
         "from": "[a-zA-Z0-9]{16}"
-    }]
+    }, {
+       "name": "ADDITIONAL_GEMS",
+       "displayName": "Additional Gems",
+       "description": "The list of additional Gems for agent definitions that need to be included. You will need to create an updated Gemfile.lock by adding these GEMs to .env, running bundle, and adding the updated Gemfile.lock to your git repository", 
+       "required": false,
+       "value": "huginn_todoist_agent"
+    } ]
 }
